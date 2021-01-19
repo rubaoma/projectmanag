@@ -1,13 +1,12 @@
-package com.example.projemanag
+package com.example.projemanag.activities
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.WindowManager
 import com.example.projemanag.databinding.ActivityIntroBinding
 
-class IntroActivity : AppCompatActivity() {
+class IntroActivity : BaseActivity() {
 
     private lateinit var binding: ActivityIntroBinding
 
@@ -23,7 +22,7 @@ class IntroActivity : AppCompatActivity() {
         )
 
        binding.btnSignUpIntro.setOnClickListener {
-           startActivity(Intent(this,SignUpActivity::class.java))
+           startActivity(Intent(this, SignUpActivity::class.java))
        }
 
         binding.btnSignInIntro.setOnClickListener {
