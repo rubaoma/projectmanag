@@ -6,7 +6,7 @@ import android.view.WindowManager
 import com.example.projemanag.R
 import com.example.projemanag.databinding.ActivitySignUpBinding
 
-class SignUpActivity : AppCompatActivity() {
+class SignUpActivity : BaseActivity() {
 
     private lateinit var binding: ActivitySignUpBinding
 
