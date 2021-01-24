@@ -71,7 +71,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:hint="@string/name"
-                            android:inputType="textEmailAddress"
+                            android:inputType="text"
                             android:textSize="@dimen/et_text_size" />
 
 
@@ -105,7 +105,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:hint="@string/password"
-                            android:inputType="textEmailAddress"
+                            android:inputType="textPassword"
                             android:textSize="@dimen/et_text_size" />
 
 

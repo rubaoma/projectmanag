@@ -37,6 +37,10 @@ class SignInActivity : BaseActivity() {
             )
         }
 
+        binding.btnSignInSignIn.setOnClickListener {
+            signInRegisteredUser()
+        }
+
         setupActionBar()
     }
 
@@ -61,22 +65,21 @@ class SignInActivity : BaseActivity() {
 
         if (validateForm(email, password)) {
             showProgressDialog(resources.getString(R.string.please_wait))
-            auth.createUserWithEmailAndPassword(email, password)
+            auth.signInWithEmailAndPassword(email, password)
                     .addOnCompleteListener(this) { task ->
                         hideProgressDialog()
                         if (task.isSuccessful) {
                             // Sign in success, update UI with the signed-in user's information
-                            Log.d("Sign in", "createUserWithEmail:success")
+                            Log.d("Sign in", "signInWithEmail:success")
                             val user = auth.currentUser
                             startActivity(Intent(this, MainActivity::class.java))
                         } else {
                             // If sign in fails, display a message to the user.
-                            Log.w("Sign in", "createUserWithEmail:failure", task.exception)
+                            Log.w("Sign in", "signInWithEmail:failure", task.exception)
                             Toast.makeText(baseContext, "Authentication failed.",
                                     Toast.LENGTH_SHORT).show()
-                        }
 
-                        // ...
+                        }
                     }
         }
 
