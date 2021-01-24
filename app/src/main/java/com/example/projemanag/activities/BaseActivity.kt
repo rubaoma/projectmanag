@@ -40,10 +40,7 @@ open class BaseActivity : AppCompatActivity() {
     fun showProgressDialog(text: String) {
         mProgressDialog = Dialog(this)
         dialogBinding = DataBindingUtil.setContentView(this, R.layout.dialog_progress)
-
-        mProgressDialog.setContentView(dialogBinding.root)
         dialogBinding.tvProgressText.text = text
-
         mProgressDialog.show()
 
     }
