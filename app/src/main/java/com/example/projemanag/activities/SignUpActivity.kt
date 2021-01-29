@@ -35,6 +35,18 @@ class SignUpActivity : BaseActivity() {
 
     }
 
+    fun userRegisteredSuccess(){
+        Toast.makeText(
+                this,
+                "you have successfully registered",
+                Toast.LENGTH_LONG
+        ).show()
+        hideProgressDialog()
+
+        FirebaseAuth.getInstance().signOut()
+        finish()
+    }
+
 
     private fun setupActionBar() {
         setSupportActionBar(findViewById(R.id.toolbar_sign_up_activity))
@@ -63,7 +75,7 @@ class SignUpActivity : BaseActivity() {
             showProgressDialog(resources.getString(R.string.please_wait))
             FirebaseAuth.getInstance()
                     .createUserWithEmailAndPassword(email, password).addOnCompleteListener { task ->
-                        hideProgressDialog()
+
                         if (task.isSuccessful) {
                             val firebaseUser: FirebaseUser = task.result!!.user!!
                             val registredEmail = firebaseUser.email!!
