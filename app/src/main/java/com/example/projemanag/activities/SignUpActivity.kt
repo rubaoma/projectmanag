@@ -8,6 +8,8 @@ import android.view.WindowManager
 import android.widget.Toast
 import com.example.projemanag.R
 import com.example.projemanag.databinding.ActivitySignUpBinding
+import com.example.projemanag.firebase.FirestoreClass
+import com.example.projemanag.model.User
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 
@@ -79,13 +81,9 @@ class SignUpActivity : BaseActivity() {
                         if (task.isSuccessful) {
                             val firebaseUser: FirebaseUser = task.result!!.user!!
                             val registredEmail = firebaseUser.email!!
-                            Toast.makeText(
-                                    this,
-                                    "$name you have successfully registered the email address $registredEmail",
-                                    Toast.LENGTH_LONG
-                            ).show()
-                            FirebaseAuth.getInstance().signOut()
-                            finish()
+                           val user = User(firebaseUser.uid, name, registredEmail)
+                            FirestoreClass().registerUser(this, user)
+
                         } else {
                             Toast.makeText(
                                     this,

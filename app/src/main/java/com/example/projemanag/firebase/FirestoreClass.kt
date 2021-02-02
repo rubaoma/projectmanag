@@ -1,5 +1,6 @@
 package com.example.projemanag.firebase
 
+import com.example.projemanag.activities.SignUpActivity
 import com.example.projemanag.databinding.ActivitySignUpBinding
 import com.example.projemanag.model.User
 import com.example.projemanag.utils.Constants
@@ -13,7 +14,7 @@ class FirestoreClass {
      // Access a Cloud Firestore instance from your Activity
    private val db = Firebase.firestore
 
-    fun registerUser(activitySignUpBinding: ActivitySignUpBinding, userInfo: User){
+    fun registerUser(activitySignUpBinding: SignUpActivity, userInfo: User){
         db.collection(Constants.USERS)
                 .document(getCurrentUserId()).set(userInfo, SetOptions.merge())
                 .addOnSuccessListener {
