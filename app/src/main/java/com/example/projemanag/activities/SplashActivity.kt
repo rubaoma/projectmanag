@@ -8,6 +8,7 @@ import android.os.Handler
 import android.os.Looper
 import android.view.WindowManager
 import com.example.projemanag.databinding.ActivitySplashBinding
+import com.example.projemanag.firebase.FirestoreClass
 
 
 class SplashActivity : AppCompatActivity() {
@@ -30,7 +31,13 @@ class SplashActivity : AppCompatActivity() {
 
 
         Handler(Looper.getMainLooper()).postDelayed({
-            startActivity(Intent(this, IntroActivity::class.java))
+            val currentUserID = FirestoreClass().getCurrentUserId()
+            if (currentUserID.isNotEmpty()){
+                startActivity(Intent(this, MainActivity::class.java))
+            }else{
+                startActivity(Intent(this, IntroActivity::class.java))
+            }
+
             finish()
         },2500)
 
